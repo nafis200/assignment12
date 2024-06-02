@@ -5,6 +5,7 @@ import useAxiosSexure from "../hooks/useAxiosSexure";
 import useAuth from "../useAuth";
 import useCart from "./useCart";
 import { useEffect, useState } from "react";
+import Swal from 'sweetalert2'
 const Checkoutform = () => {
     const axiosSecure = useAxiosSexure()
     const {users} = useAuth()
@@ -14,6 +15,7 @@ const Checkoutform = () => {
     const [error,setError] = useState('')
     const [clientSecret,setClientSecret] = useState('')
     const [transactionId,setTransectionId] = useState('')
+    
     const totalPrice = mobile.reduce((total,item)=> total + item.price ,0)
     useEffect(()=>{
       if(totalPrice > 0){
@@ -25,10 +27,25 @@ const Checkoutform = () => {
         })
        }
     },[axiosSecure,totalPrice])
-   
-  
+      
+
     const handleSubmit =async(event)=>{
+ 
            event.preventDefault()
+         
+           if(!users?.email){
+            Swal.fire({
+              position: "top-end",
+              icon: "error",
+              title: `please login first`,
+              showConfirmButton: false,
+              timer: 3500
+            });
+            return
+           }
+
+           
+    
            if (!stripe || !elements) {
             return;
           }
@@ -65,28 +82,34 @@ const Checkoutform = () => {
             }
         })
         if(confirmError){
-            console.log('confirm error')
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: `${confirmError.message}`,
+            showConfirmButton: false,
+            timer: 1500
+          });
         }
         else{
-      
            if(paymentIntent.status === 'succeeded'){
               setTransectionId(paymentIntent.id)
-              
-              // const payment = {
-                 
-              // }
-            //  const res =await axiosSecure.post(`/payments`,payment)
-            //  console.log(res.data,'payment save')
-             refetch()
-            //  if(res.data?.paymentResult?.insertedId){
-            //     //  sweet alert
-                
-            //  }
+              axiosSecure.patch(`/users/pro/${users?.email}`)
+              .then(res=>{
+                refetch()
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: `${users.email} is an surveyor Now!`,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+              })
+          
            }
         }
-
     }
     return (
+       <>
         <form onSubmit={handleSubmit}>
        <CardElement
           options={{
@@ -107,9 +130,9 @@ const Checkoutform = () => {
         <button className="btn btn-sm btn-primary my-4" disabled={!stripe || !clientSecret} type="submit">
           Pay
         </button>
-        
-       
     </form>
+       </>
+
     );
 };
 

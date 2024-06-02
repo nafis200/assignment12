@@ -25,10 +25,11 @@ const useAxiosSexure = () => {
        return response;
      }, async (error)=> {
        const status = error.response.status
-       console.log('status error',status)
        if(status === 401 || status === 403){
              await logout()
-             .then()
+             .then(res=>{
+                console.log('loading error')
+             })
              .catch(error =>{
                 console.log(error)
              })

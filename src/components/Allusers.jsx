@@ -2,27 +2,23 @@
 import useAxiosSexure from "./hooks/useAxiosSexure";
 import useAuth from "./useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const Allusers = () => {
-    
+    const [usered,setUsered] = useState([])
     const axiosSecure = useAxiosSexure()
     const {data: users = [], refetch} = useQuery({
         queryKey:['menu'],
         queryFn:async()=>{
             const res = await axiosSecure.get('/users'
-            
-            // ,{
-            //   headers:{
-            //      authorization: `bearer${localStorage.getItem('access-token')}`
-            //   }
-            // }
           )
+             setUsered(res.data)
             return res.data
         } 
     })
-
+    
     const handleMakeAdmin = (user) => {
         axiosSecure.patch(`/users/admin/${user._id}`)
         .then(res=>{
@@ -32,6 +28,22 @@ const Allusers = () => {
               position: "top-end",
               icon: "success",
               title: `${user.name} is an Admin Now!`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        })
+      };
+
+      const handleMakeSurveyor = (user) => {
+        axiosSecure.patch(`/users/surveyor/${user._id}`)
+        .then(res=>{
+          if (res.data.modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `${user.name} is an surveyor Now!`,
               showConfirmButton: false,
               timer: 1500
             });
@@ -84,25 +96,33 @@ const Allusers = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {usered.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  {user.role === "admin" ? (
-                    "I am Admin"
-                  ) : (
-                    <button
-                    onClick={() => handleMakeAdmin(user)}
-                      className="btn btn-lg bg-orange-500"
-                    >
-                      <FaUsers
-                        className="text-white 
-                                        text-2xl"
-                      ></FaUsers>
-                    </button>
-                  )}
+                  {user.role === "admin" && 
+                    <p>I am Admin</p>
+                  }
+                </td>
+                <td>
+                  {user.role === "surveyor" && 
+                    <p>I am surveyor</p>
+                  }
+                </td>
+                <td>
+                  {user.role === "pro-user" && 
+                    <p>I am pro-user</p>
+                  }
+                </td>
+                <td>
+                   {
+                     user.role == null && <div className="space-x-2 space-y-2">
+                     <p className="inline">I am user</p> <button onClick={()=>handleMakeAdmin(user)} className="btn btn-primary">make admin</button><button onClick={()=>handleMakeSurveyor(user)} className="btn btn-primary">make surveyor</button>
+                     </div>
+            
+                   }
                 </td>
                 <td>
                   <button
