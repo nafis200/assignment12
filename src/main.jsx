@@ -17,6 +17,7 @@ import Admin from "./components/Admin";
 import Allusers from "./components/Allusers";
 import AdminRoute from "./components/AdminRoute";
 import Paymnet from "./components/payments/Paymnet";
+import Createsurvey from "./components/survey/Createsurvey";
 
 const queryClient = new QueryClient()
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path:'/paymnet',
         element:<Paymnet></Paymnet>
+      },
+      {
+        path:'/createsurvey',
+        element:<Createsurvey></Createsurvey>
       }
     ]
   }
