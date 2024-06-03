@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../useAuth";
 import useSurvey from "../hooks/useSurvey";
+import useAxiosSexure from "../hooks/useAxiosSexure";
 const Createsurvey = () => {
     const [startDate, setStartDate] = useState();
     const {users} = useAuth()
     const [survey] = useSurvey()
+    const axiosSecure = useAxiosSexure()
     const handleSubmit = e=>{
         e.preventDefault();
         const form = e.target
@@ -63,6 +65,13 @@ const Createsurvey = () => {
         }
         console.log(totalValue)
         setStartDate('')
+        axiosSecure.post('/surveyor',totalValue)
+        .then(res=>{
+           console.log('success')
+        })
+        .catch(error=>{
+           console.log('some error maybe occur')
+        })
         e.target.reset()
    }
   return (
@@ -107,9 +116,15 @@ const Createsurvey = () => {
             name="difficulty"
             required
           >
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
+            <option value="Software Development Practices">Software Development Practices</option>
+            <option value="Cybersecurity Awareness">Cybersecurity Awareness</option>
+            <option value="Cloud Computing Adoption">Cloud Computing Adoption</option>
+            <option value="User Experience (UX) Design">User Experience (UX) Design</option>
+            <option value="IT Infrastructure Management">IT Infrastructure Management</option>
+            <option value="Data Privacy and Protection">Data Privacy and Protection</option>
+            <option value="Artificial Intelligence (AI) and Machine Learning (ML)">Artificial Intelligence (AI) and Machine Learning (ML)</option>
+            <option value="IT Training and Development Needs">IT Training and Development Needs</option>
+            <option value="IT Project Management">IT Project Management</option>
           </select>
         </div>
         <div className="">

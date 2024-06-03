@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
-
+import Swal from 'sweetalert2'
 const axiosSecure = axios.create({
     baseURL: 'http://localhost:5000'
 })
@@ -24,7 +24,8 @@ const useAxiosSexure = () => {
        
        return response;
      }, async (error)=> {
-       const status = error.response.status
+       const status = error.response.status 
+       console.log(error.response.data.message)
        if(status === 401 || status === 403){
              await logout()
              .then(res=>{
@@ -33,6 +34,13 @@ const useAxiosSexure = () => {
              .catch(error =>{
                 console.log(error)
              })
+             Swal.fire({
+                title: `${error.response.data.message}`,
+                text: "You are logout!",
+                icon: "error",
+                showConfirmButton: false,
+                timer: 4000
+              });
              navigate('/login')
        }
        return Promise.reject(error);
