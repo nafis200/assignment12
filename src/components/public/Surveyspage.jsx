@@ -1,18 +1,9 @@
-import { useState } from "react";
-// import useSurvey from "../hooks/useSurvey";
-// import Surveycard from "./Surveycard";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { useQuery } from "@tanstack/react-query";
 import useAxiospublic from "../hooks/useAxiospublic";
 import Surveycard from "./Surveycard";
 
 const Surveyspage = () => {
-  //   const [survey,refetch] = useSurvey();
-  //   useEffect(()=>{
-  //      fetch('http://localhost:5000/surveyor')
-  //      .then(res=>res.json())
-  //      .then(data=> setItems(data))
-  //   },[])
   const axiosSecure = useAxiospublic();
 
   let dynamically = "all";
@@ -25,20 +16,20 @@ const Surveyspage = () => {
     }
   });
 
-  // const handleChange = () => {
-  //   dynamically = "Cybersecurity Awareness";
-  //   refetch();
-  // };
-
-  // const handleChange1 = () => {
-  //   dynamically = "User Experience (UX) Design";
-  //   refetch();
-  // };
-
   const Sortfunction = (check) => {
     dynamically = check
     refetch();
   };
+
+  const Sortdatabase = (check)=>{
+      dynamically = check 
+      refetch()
+      survey.sort((b,a)=>{
+         b.totalVotes - a.totalVotes
+      })
+  };
+
+ 
 
   return (
     <div>
@@ -88,6 +79,10 @@ const Surveyspage = () => {
             </li>
           </ul>
         </div>
+        <span className=" flex items-center gap-2">
+          
+               <button onClick={()=>Sortdatabase("all")} className="btn mt-3">Sort</button>
+            </span>
       </section>
 
       <div className="mt-20 grid lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 lg:space-y-10 space-y-5 lg:ml-4 md:ml-[200px]">
