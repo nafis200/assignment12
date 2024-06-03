@@ -18,6 +18,7 @@ import Allusers from "./components/Allusers";
 import AdminRoute from "./components/AdminRoute";
 import Paymnet from "./components/payments/Paymnet";
 import Createsurvey from "./components/survey/Createsurvey";
+import Surveyspage from "./components/public/Surveyspage";
 
 const queryClient = new QueryClient()
 
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path:'/createsurvey',
         element:<Createsurvey></Createsurvey>
+      },
+      {
+        path:'/surveypages',
+        element:<Surveyspage></Surveyspage>
       }
     ]
   }

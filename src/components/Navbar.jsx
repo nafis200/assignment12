@@ -8,6 +8,7 @@ const Navbar = () => {
     const navigate = useNavigate()
     const links = <>
            <Link className="ml-4" to="/">Home</Link>
+           <Link className="ml-4" to='/surveypages'>Surveys page</Link>
            <Link className="ml-4" to='/login'>Login</Link>
            <Link className="ml-4" to='/signup'>Signup</Link>
            <Link className="ml-4" to='/admin'>Admin</Link>

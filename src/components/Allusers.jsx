@@ -14,7 +14,7 @@ const Allusers = () => {
         queryFn:async()=>{
             const res = await axiosSecure.get('/users'
           )
-             setUsered(res.data)
+            setUsered(res.data)
             return res.data
         } 
     })
