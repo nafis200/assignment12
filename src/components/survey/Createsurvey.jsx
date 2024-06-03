@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import useAuth from "../useAuth";
 import useSurvey from "../hooks/useSurvey";
 import useAxiosSexure from "../hooks/useAxiosSexure";
+import Swal from 'sweetalert2'
 const Createsurvey = () => {
     const [startDate, setStartDate] = useState();
     const {users} = useAuth()
@@ -63,14 +64,20 @@ const Createsurvey = () => {
              countno,
              serialNo
         }
-        console.log(totalValue)
+        
         setStartDate('')
         axiosSecure.post('/surveyor',totalValue)
         .then(res=>{
-           console.log('success')
+          Swal.fire({
+            title: `Good job!${users.email}`,
+            text: "Successfully added",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 3000
+          });
         })
         .catch(error=>{
-           console.log('some error maybe occur')
+           
         })
         e.target.reset()
    }

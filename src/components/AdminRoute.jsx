@@ -12,8 +12,9 @@ const AdminRoute = ({children}) => {
     if(loading || isAdminLoading){
         return <span className="loading loading-spinner text-error lg:text-4xl md:text-3xl text-2xl lg:ml-[700px] md:ml-[400px] ml-[200px] mt-10"></span>
     }
-
-    if (users && isAdmin) {
+    console.log(isAdmin)
+    
+    if (users?.email && isAdmin) {
         return children;
     }
 
