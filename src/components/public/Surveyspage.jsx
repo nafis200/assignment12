@@ -74,6 +74,18 @@ const Surveyspage = () => {
             <li>
               <a onClick={() => Sortfunction("User Experience (UX) Design")}>UX Design</a>
             </li>
+            <li>
+              <a onClick={() => Sortfunction("IT Infrastructure Management")}>IT Infrastructure Management</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("Data Privacy and Protection")}>Data Privacy and Protection</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("Artificial Intelligence (AI) and Machine Learning (ML)")}>Artificial Intelligence (AI) and Machine Learning (ML)</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("IT Training and Development Needs")}>IT Training and Development Needs</a>
+            </li>
           </ul>
         </div>
       </section>
