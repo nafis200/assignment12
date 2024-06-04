@@ -37,6 +37,16 @@ const Surveydetials = () => {
     e.preventDefault();
     const form = e.target
     const value = form.options.value 
+    if(!value){
+      Swal.fire({
+        title: `please select option`,
+        text: "Not submitted",
+        icon: "error",
+        showConfirmButton: false,
+        timer: 3000
+      });
+      return
+    }
     const ans = {value}
     if(!users?.email){
         Swal.fire({
