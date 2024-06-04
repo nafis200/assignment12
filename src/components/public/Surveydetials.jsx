@@ -1,6 +1,9 @@
 import { useLoaderData, useParams } from "react-router";
 import useAuth from "../useAuth";
 import Swal from 'sweetalert2'
+import useAxiospublic from "../hooks/useAxiospublic";
+import { useQuery } from "@tanstack/react-query";
+import useCart from "../payments/useCart";
 const Surveydetials = () => {
   const { id } = useParams();
   const loader = useLoaderData();
@@ -18,15 +21,22 @@ const Surveydetials = () => {
     options,
     countyes,
     countno,
-    serialNo
+    serialNo,
   } = loader;
 
   const {users} = useAuth()
+  const axiosSecure = useAxiospublic()
+  console.log(loader)
+ 
+  
+
+  
 
   const handleSubmit = (e)=>{
     e.preventDefault();
     const form = e.target
     const value = form.options.value 
+    const ans = {value}
     if(!users?.email){
         Swal.fire({
             title: `please login`,
@@ -35,6 +45,21 @@ const Surveydetials = () => {
             showConfirmButton: false,
             timer: 3000
           });
+    }
+    else{
+        axiosSecure.patch(`/details/${_id}`,ans)
+        .then(()=>{
+            Swal.fire({
+                title: `your answer ${value}`,
+                text: "Successfully submitted",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 5000
+              });
+              location.reload();
+        })
+        .catch()
+
     }
   }
 
@@ -91,7 +116,7 @@ const Surveydetials = () => {
           </h2>
            <input className="btn mt-2 w-full btn-primary" type="submit" value="Submit" />
           </form>
-
+           
         </div>
       </div>
     </div>
