@@ -1,36 +1,37 @@
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData } from "react-router";
 import useAuth from "../useAuth";
 import Swal from 'sweetalert2'
 import useAxiospublic from "../hooks/useAxiospublic";
 import { useQuery } from "@tanstack/react-query";
-import useCart from "../payments/useCart";
+
 const Surveydetials = () => {
-  const { id } = useParams();
   const loader = useLoaderData();
   const {
     _id,
     title,
     description,
-    medium,
-    Dates,
-    email,
     name,
     Timestamp,
-    status,
     totalVotes,
     options,
     countyes,
     countno,
-    serialNo,
   } = loader;
 
   const {users} = useAuth()
   const axiosSecure = useAxiospublic()
-  console.log(loader)
+  
  
-  
-
-  
+  const {data: userx = []} = useQuery({
+    queryKey:['menu'],
+    queryFn:async()=>{
+        const res = await axiosSecure.get(`/users`)
+        return res.data
+    } 
+})
+  const [datams] = userx.filter(it=> it.email === users?.email)
+  const {role} = datams || {role:'user'}
+  console.log(datams,role)
 
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -118,6 +119,14 @@ const Surveydetials = () => {
           </form>
            
         </div>
+      </div>
+      {
+         options && <h2 className="lg:text-2xl text-xl text-center mt-5 text-blue-700 font-bold"> your votes result is: {options}</h2>
+      }
+      <div className="flex justify-center">
+      
+        <textarea className="textarea textarea-primary mt-5" placeholder="Commnets" disabled={role !== "pro-user"} ></textarea>
+        
       </div>
     </div>
   );
