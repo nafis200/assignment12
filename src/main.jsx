@@ -19,6 +19,7 @@ import AdminRoute from "./components/AdminRoute";
 import Paymnet from "./components/payments/Paymnet";
 import Createsurvey from "./components/survey/Createsurvey";
 import Surveyspage from "./components/public/Surveyspage";
+import Surveydetials from "./components/public/Surveydetials";
 
 const queryClient = new QueryClient()
 
@@ -59,7 +60,13 @@ const router = createBrowserRouter([
       {
         path:'/surveypages',
         element:<Surveyspage></Surveyspage>
+      },
+      {
+         path:'/surveydetails/:id',
+         element: <Surveydetials></Surveydetials>,
+         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
       }
+
     ]
   }
 ]);

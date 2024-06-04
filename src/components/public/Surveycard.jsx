@@ -1,6 +1,7 @@
 import { Slide } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
 const Surveycard = ({ data }) => {
-  const { title, description, totalVotes } = data;
+  const { title, description, totalVotes,_id } = data;
   return (
     <div>
       <div className="card lg:w-96 md:w-96 w-72 bg-base-100 shadow-xl ml-7">
@@ -28,6 +29,7 @@ const Surveycard = ({ data }) => {
               {totalVotes}
             </h2>
           </Slide>
+          <Link to={`/surveydetails/${_id}`}><button className="btn btn-primary">View details</button></Link>
         </div>
       </div>
     </div>
