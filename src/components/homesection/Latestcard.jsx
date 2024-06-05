@@ -1,5 +1,5 @@
-const Mostcard = ({ data }) => {
-  const { title, description, totalVotes, _id } = data;
+const Latestcard = ({ data }) => {
+  const { title, description, totalVotes, _id,Timestamp } = data;
   return (
     <div>
       <div>
@@ -14,14 +14,7 @@ const Mostcard = ({ data }) => {
               discription:{" "}
             </h2>{" "}
             <span className="">{description}</span>{" "}
-            <h2 className="font-bold flex items-center gap-2">
-              {" "}
-              <span className="flex items-center gap-2">
-                {" "}
-                <span className="text-orange-400">Votes</span>{" "}
-              </span>{" "}
-              {totalVotes}
-            </h2>
+            
           </div>
         </div>
       </div>
@@ -29,4 +22,4 @@ const Mostcard = ({ data }) => {
   );
 };
 
-export default Mostcard;
+export default Latestcard;
