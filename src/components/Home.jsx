@@ -1,3 +1,4 @@
+import Banner from "./homesection/Banner";
 
 
 const Home = () => {
@@ -7,9 +8,11 @@ const Home = () => {
 
 // const cursor = collection.find().sort({ date: 1 });
 
-  return <div>
-
-  </div>;
+  return (
+     <>
+     <Banner></Banner>
+     </>
+  )
 };
 
 export default Home;
