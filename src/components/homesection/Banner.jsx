@@ -4,7 +4,7 @@
 const Banner = () => {
     return (
         <div>
-              <div className="mt-5">
+        <div className="mt-5 ">
        <div className="relative">
        <img className="mt-10 w-full lg:h-[500px] md:h-[400px] h-[450px]" src="https://i.postimg.cc/7Y2fsPMX/1000-F-485095547-SEFn-UTEsc-D7auy-TTBqmhd7hf-RA99s-KPP.jpg" alt="" />
         <div className="absolute top-[120px] lg:top-[170px] lg:left-[20px]">
