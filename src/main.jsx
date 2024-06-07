@@ -61,10 +61,6 @@ const router = createBrowserRouter([
         element:<Paymnet></Paymnet>
       },
       {
-        path:'/createsurvey',
-        element:<Createsurvey></Createsurvey>
-      },
-      {
         path:'/surveypages',
         element:<Surveyspage></Surveyspage>
       },
@@ -125,6 +121,10 @@ const router = createBrowserRouter([
       {
         path:'adminresponse',
         element:<Adminresponse></Adminresponse>
+      },
+      {
+        path:'createsurvey',
+        element:<Createsurvey></Createsurvey>
       }
      ]
     

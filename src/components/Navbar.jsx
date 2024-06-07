@@ -20,8 +20,8 @@ const Navbar = () => {
              </>
            }
            
-           <Link className="ml-4" to='/paymnet'>Payment</Link>
-           <Link className="ml-4" to='/createsurvey'>Create survey</Link>
+           <Link className="ml-4" to='/paymnet'>Pricing Page </Link>
+           
            
     </>
 
