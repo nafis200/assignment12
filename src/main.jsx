@@ -71,17 +71,7 @@ const router = createBrowserRouter([
          element: <Surveydetials></Surveydetials>,
          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
       },
-      {
-         path:'/userSurveydetails/:id', 
-         element:<Usersurveydetail></Usersurveydetail>,
-         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
-      },
-      {
-         path:'/userreportdetails/:id',
-         element:<UserReprotdetails></UserReprotdetails>,
-         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
-      }
-
+      
     ]
   },
   {
@@ -95,7 +85,17 @@ const router = createBrowserRouter([
         {
           path:'userreport',
           element:<UserReport></UserReport>
-        }
+        },
+        {
+          path:'userSurveydetails/:id', 
+          element:<Usersurveydetail></Usersurveydetail>,
+          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+       },
+       {
+          path:'userreportdetails/:id',
+          element:<UserReprotdetails></UserReprotdetails>,
+          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+       }
      ]
     
   }

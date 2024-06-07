@@ -32,7 +32,7 @@ const Userparti = ({data}) => {
               {totalVotes}
             </h2>
           </Slide>
-          <Link to={`/userSurveydetails/${_id}`}><button className="btn btn-primary">Participants Survey</button></Link>
+          <Link to={`/dashboard/userSurveydetails/${_id}`}><button className="btn btn-primary">Participants Survey</button></Link>
         </div>
       </div>
         </div>
