@@ -28,6 +28,7 @@ import Wellcome from "./components/Dashboard/Wellcome";
 import Commentdetails from "./components/Dashboard/comments/Commentdetails";
 import Comment from "./components/Dashboard/comments/Comment";
 import AdminRoute from "./components/AdminRoute"
+import Publish from "./components/Dashboard/admindashboard/Publish";
 
 const queryClient = new QueryClient()
 
@@ -110,8 +111,11 @@ const router = createBrowserRouter([
        {
         path:'alluser',
         element:<AdminRoute><Allusers></Allusers></AdminRoute>
-
       },
+      {
+        path:'publish',
+        element:<AdminRoute><Publish></Publish></AdminRoute>
+      }
      ]
     
   }

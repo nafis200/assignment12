@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { FaHome } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 import { FaHouseUser } from "react-icons/fa";
+import { MdPublish } from "react-icons/md";
 
 const Dashboard = () => {
     const {users} = useAuth()
@@ -53,6 +54,8 @@ const Dashboard = () => {
              {
                  role === 'admin' && <>
                   <li> <NavLink to='/dashboard/alluser'><FaHouseUser></FaHouseUser> See all user</NavLink> </li>
+                  <li> <NavLink to='/dashboard/publish'> <MdPublish></MdPublish> Publish/unPublish</NavLink> </li>
+                  
                  </>
              }
              {
