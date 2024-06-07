@@ -25,6 +25,7 @@ import Userservey from "./components/Dashboard/userhome/Userservey";
 import Usersurveydetail from "./components/Dashboard/userhome/Usersurveydetail";
 import UserReport from "./components/Dashboard/userreport/UserReport";
 import UserReprotdetails from "./components/Dashboard/userreport/UserReprotdetails";
+import Wellcome from "./components/Dashboard/Wellcome";
 
 const queryClient = new QueryClient()
 
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
      path:'dashboard',
      element:<Dashboard></Dashboard>,
      children:[
+        {
+          path:'wellcome',
+          element:<Wellcome></Wellcome>
+        },
         {
           path:'usersurvey',
           element:<Userservey></Userservey>,

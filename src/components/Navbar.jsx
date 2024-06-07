@@ -16,7 +16,7 @@ const Navbar = () => {
            },
            {
              users?.email && <>
-              <Link className="ml-4" to='/dashboard'>Dashboard</Link>
+              <Link className="ml-4" to='/dashboard/wellcome'>Dashboard</Link>
              </>
            }
            

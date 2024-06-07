@@ -7,6 +7,7 @@ import useAxiosSexure from "../hooks/useAxiosSexure";
 import { RiSurveyLine } from "react-icons/ri";
 import { MdOutlineReport } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
+import { FaHome } from "react-icons/fa";
 const Dashboard = () => {
     const {users} = useAuth()
     const axiosSecure = useAxiosSexure()
@@ -26,6 +27,7 @@ const Dashboard = () => {
             {/* side bar */}
             <div className="w-64 min-h-screen bg-blue-600 text-white">
             <ul className="menu p-4">
+            <li><NavLink to='/dashboard/wellcome'> <FaHome></FaHome>Home route</NavLink></li>
              {
                 !role && <>
                 
