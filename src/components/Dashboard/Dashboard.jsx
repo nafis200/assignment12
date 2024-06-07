@@ -9,6 +9,7 @@ import { MdOutlineReport } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { FaHome } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
+import { FaHouseUser } from "react-icons/fa";
 
 const Dashboard = () => {
     const {users} = useAuth()
@@ -51,7 +52,7 @@ const Dashboard = () => {
 
              {
                  role === 'admin' && <>
-                  <li> <NavLink to='/dashboard/alluser'>See all user</NavLink> </li>
+                  <li> <NavLink to='/dashboard/alluser'><FaHouseUser></FaHouseUser> See all user</NavLink> </li>
                  </>
              }
              {
