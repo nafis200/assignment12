@@ -1,14 +1,35 @@
 
 
 import { Slide } from "react-awesome-reveal";
-import { Link } from "react-router-dom";
+import useAxiosSexure from "../../hooks/useAxiosSexure";
+import useAxiospublic from "../../hooks/useAxiospublic";
+import Swal from 'sweetalert2'
 const Publishcard = ({data}) => {
-    const { title, description, totalVotes,_id } = data;
+    const axiosSecure = useAxiosSexure()
+    const axiosSecure1 = useAxiospublic()
+    const { title, description, totalVotes,_id,email,serialNo,status } = data;
     const handleSubmut = (e)=>{
         e.preventDefault();
         const form = e.target;
         const feed = form.feedback.value   
-        console.log(feed)
+        const totalValue = {
+            title,description,email,serialNo,feed
+        }
+        
+        axiosSecure.post('/publish',totalValue)
+        .then(()=>{
+           axiosSecure1.patch(`/publish/${_id}`)
+           .then(()=>{
+            Swal.fire({
+                title: `Good job!`,
+                text: "Successfully unPublish",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000
+              });
+           })
+        })
+        e.target.reset()
     }
     return (
         <div>
@@ -38,12 +59,19 @@ const Publishcard = ({data}) => {
               {totalVotes}
             </h2>
           </Slide>
-          <button
-            className="btn btn-primary"
-            onClick={() => document.getElementById(_id).showModal()}
-          >
-            Unpublish
-          </button>
+          {
+             status === "publish" ? <button
+             className="btn btn-primary"
+             onClick={() => document.getElementById(_id).showModal()}
+           >
+             Unpublish
+           </button> : <button
+             className="btn btn-primary"
+             onClick={() => document.getElementById(_id).showModal()}
+           >
+             publish
+           </button>
+          }
           <section>
             <dialog
               id={_id}
