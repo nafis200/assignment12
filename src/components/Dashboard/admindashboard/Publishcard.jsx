@@ -2,13 +2,10 @@
 
 import { Slide } from "react-awesome-reveal";
 import useAxiosSexure from "../../hooks/useAxiosSexure";
-import useAxiospublic from "../../hooks/useAxiospublic";
 import Swal from 'sweetalert2'
-import useSurvey from "../../hooks/useSurvey";
-const Publishcard = ({data}) => {
+
+const Publishcard = ({data,refetch}) => {
     const axiosSecure = useAxiosSexure()
-    const axiosSecure1 = useAxiospublic()
-    const [refetch] = useSurvey()
     const { title, description, totalVotes,_id,email,serialNo,status } = data;
     const handleSubmut = (e)=>{
         e.preventDefault();
@@ -21,8 +18,9 @@ const Publishcard = ({data}) => {
         .then(()=>{
            
         })
-        axiosSecure1.patch(`/publish/${_id}`)
+        axiosSecure.patch(`/publish/${_id}`)
         .then(()=>{
+            refetch()
             Swal.fire({
                 title: `Good job!`,
                 text: "Successfully Unpublish",
@@ -34,7 +32,7 @@ const Publishcard = ({data}) => {
         e.target.reset()
     }
     const publisher = e=>{
-        axiosSecure1.patch(`/publish1/${e}`)
+        axiosSecure.patch(`/publish1/${e}`)
         .then(()=>{
         refetch()
          Swal.fire({
