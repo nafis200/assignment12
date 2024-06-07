@@ -1,7 +1,6 @@
 
 import { useLoaderData } from "react-router";
 import Swal from 'sweetalert2'
-import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../useAuth";
 import useAxiospublic from "../../hooks/useAxiospublic";
 

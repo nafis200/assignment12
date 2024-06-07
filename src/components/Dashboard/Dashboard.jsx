@@ -5,6 +5,7 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../useAuth";
 import useAxiosSexure from "../hooks/useAxiosSexure";
 import { RiSurveyLine } from "react-icons/ri";
+import { MdOutlineReport } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 const Dashboard = () => {
     const {users} = useAuth()
@@ -29,10 +30,10 @@ const Dashboard = () => {
                 !role && <>
                 
                 <li><NavLink to='/dashboard/usersurvey'> <RiSurveyLine></RiSurveyLine> Participate in surveys</NavLink></li>
+                <li><NavLink to='/dashboard/userreport'> <RiSurveyLine></RiSurveyLine> Report in surveys</NavLink></li>
 
                 </>
              }
-
             </ul>
             </div>
             {/* dashboard content */}

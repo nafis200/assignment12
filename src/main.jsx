@@ -23,6 +23,8 @@ import Surveydetials from "./components/public/Surveydetials";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Userservey from "./components/Dashboard/userhome/Userservey";
 import Usersurveydetail from "./components/Dashboard/userhome/Usersurveydetail";
+import UserReport from "./components/Dashboard/userreport/UserReport";
+import UserReprotdetails from "./components/Dashboard/userreport/UserReprotdetails";
 
 const queryClient = new QueryClient()
 
@@ -73,6 +75,11 @@ const router = createBrowserRouter([
          path:'/userSurveydetails/:id', 
          element:<Usersurveydetail></Usersurveydetail>,
          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+      },
+      {
+         path:'/userreportdetails/:id',
+         element:<UserReprotdetails></UserReprotdetails>,
+         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
       }
 
     ]
@@ -86,7 +93,8 @@ const router = createBrowserRouter([
           element:<Userservey></Userservey>,
         },
         {
-
+          path:'userreport',
+          element:<UserReport></UserReport>
         }
      ]
     
