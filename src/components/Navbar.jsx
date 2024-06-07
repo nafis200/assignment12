@@ -20,9 +20,6 @@ const Navbar = () => {
              </>
            }
            
-           
-           <Link className="ml-4" to='/admin'>Admin</Link>
-           <Link className="ml-4" to='/alluser'>AllUser</Link>
            <Link className="ml-4" to='/paymnet'>Payment</Link>
            <Link className="ml-4" to='/createsurvey'>Create survey</Link>
            

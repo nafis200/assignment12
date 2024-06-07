@@ -15,7 +15,6 @@ import {
 } from '@tanstack/react-query'
 import Admin from "./components/Admin";
 import Allusers from "./components/Allusers";
-import AdminRoute from "./components/AdminRoute";
 import Paymnet from "./components/payments/Paymnet";
 import Createsurvey from "./components/survey/Createsurvey";
 import Surveyspage from "./components/public/Surveyspage";
@@ -28,6 +27,7 @@ import UserReprotdetails from "./components/Dashboard/userreport/UserReprotdetai
 import Wellcome from "./components/Dashboard/Wellcome";
 import Commentdetails from "./components/Dashboard/comments/Commentdetails";
 import Comment from "./components/Dashboard/comments/Comment";
+import AdminRoute from "./components/AdminRoute"
 
 const queryClient = new QueryClient()
 
@@ -52,10 +52,6 @@ const router = createBrowserRouter([
       {
         path:'/admin',
         element:<Admin></Admin>
-      },
-      {
-        path:'/alluser',
-        element:<AdminRoute><Allusers></Allusers></AdminRoute>
       },
       {
         path:'/paymnet',
@@ -110,7 +106,12 @@ const router = createBrowserRouter([
        {
          path:'comment',
          element:<Comment></Comment>
-       }
+       },
+       {
+        path:'alluser',
+        element:<AdminRoute><Allusers></Allusers></AdminRoute>
+
+      },
      ]
     
   }

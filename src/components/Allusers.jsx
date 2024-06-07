@@ -1,20 +1,17 @@
 
-import useAxiosSexure from "./hooks/useAxiosSexure";
-import useAuth from "./useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
-
+import useAxiosSexure from "./hooks/useAxiosSexure";
+import { IoIosArrowDropdown } from "react-icons/io";
 const Allusers = () => {
-    const [usered,setUsered] = useState([])
     const axiosSecure = useAxiosSexure()
+    let dynamically = 'all'
     const {data: users = [], refetch} = useQuery({
         queryKey:['menu'],
         queryFn:async()=>{
-            const res = await axiosSecure.get('/users'
+            const res = await axiosSecure.get(`/adminuser/${dynamically}`
           )
-            setUsered(res.data)
             return res.data
         } 
     })
@@ -77,12 +74,66 @@ const Allusers = () => {
         });
       };
 
+      const Sortfunction = (check) => {
+        dynamically = check
+        refetch();
+      };
+
     return(
         <div>
       <div className="flex justify-evenly my-4">
         <h2 className="text-3xl">All Users</h2>
         <h2 className="text-3xl">Total Users: {users.length}</h2>
       </div>
+
+      <section className="container mx-auto flex justify-center">
+        <div className="dropdown dropdown-bottom ">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn m-1 bg-blue-400 text-center lg:w-[100px] p-2 text-white mt-5"
+          >
+            <span className=" flex items-center gap-2">
+              Filter by category{" "}
+              <IoIosArrowDropdown className="lg:text-2xl"></IoIosArrowDropdown>{" "}
+            </span>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a onClick={() => Sortfunction("all")}>All</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("admin")}>Admin</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("pro-user")}>Pro user</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("surveyor")}>Surveyor</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("User Experience (UX) Design")}>UX Design</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("IT Infrastructure Management")}>IT Infrastructure Management</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("Data Privacy and Protection")}>Data Privacy and Protection</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("Artificial Intelligence (AI) and Machine Learning (ML)")}>Artificial Intelligence (AI) and Machine Learning (ML)</a>
+            </li>
+            <li>
+              <a onClick={() => Sortfunction("IT Training and Development Needs")}>IT Training and Development Needs</a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           {/* head */}
@@ -96,7 +147,7 @@ const Allusers = () => {
             </tr>
           </thead>
           <tbody>
-            {usered.map((user, index) => (
+            {users.map((user, index) => (
               <tr key={user._id}>
                 <th>{index + 1}</th>
                 <td>{user.name}</td>

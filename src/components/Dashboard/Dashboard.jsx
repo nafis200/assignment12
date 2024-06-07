@@ -9,6 +9,7 @@ import { MdOutlineReport } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { FaHome } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
+
 const Dashboard = () => {
     const {users} = useAuth()
     const axiosSecure = useAxiosSexure()
@@ -20,8 +21,11 @@ const Dashboard = () => {
         } 
     })
       const [datams] = userx.filter(it=> it.email === users?.email)
-      const {role} = datams || {role:'user'}
+      const {role} = datams || {role:'admin'} 
+      console.log(role)
      
+      
+    
     return (
         <div>
             <div className="flex">
@@ -44,7 +48,22 @@ const Dashboard = () => {
                 <li> <NavLink to='/dashboard/comment'><FaComment></FaComment> Comment in survey</NavLink> </li>
                 </>
              }
+
+             {
+                 role === 'admin' && <>
+                  <li> <NavLink to='/dashboard/alluser'>See all user</NavLink> </li>
+                 </>
+             }
+             {
+                 role === 'surveyor' && <>
+                  <li><NavLink to='/dashboard/usersurvey'> <RiSurveyLine></RiSurveyLine>  surveys</NavLink></li>
+                  <li><NavLink to='/dashboard/userreport'> <RiSurveyLine></RiSurveyLine> surveys</NavLink></li>
+                 </>
+             }
+               <div className="divider divider-neutral"></div>
+              <li> <NavLink to='/'><FaHome></FaHome>Home</NavLink> </li>
             </ul>
+           
             </div>
             {/* dashboard content */}
             <div className="flex-1 p-8">
