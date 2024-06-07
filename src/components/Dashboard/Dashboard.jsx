@@ -27,7 +27,7 @@ const Dashboard = () => {
             {/* side bar */}
             <div className="w-64 min-h-screen bg-blue-600 text-white">
             <ul className="menu p-4">
-            <li><NavLink to='/dashboard/wellcome'> <FaHome></FaHome>Home route</NavLink></li>
+            <li><NavLink to='/dashboard/wellcome'> <FaHome></FaHome>your profile</NavLink></li>
              {
                 !role && <>
                 
