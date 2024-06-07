@@ -5,13 +5,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../useAuth";
 import useAxiosSexure from "../hooks/useAxiosSexure";
 import { RiSurveyLine } from "react-icons/ri";
-import { MdOutlineReport } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { FaHome } from "react-icons/fa";
 import { FaComment } from "react-icons/fa";
 import { FaHouseUser } from "react-icons/fa";
 import { MdPublish } from "react-icons/md";
 import { FaMoneyBillAlt } from "react-icons/fa";
+import { MdQuestionAnswer } from "react-icons/md";
 
 const Dashboard = () => {
     const {users} = useAuth()
@@ -57,6 +57,7 @@ const Dashboard = () => {
                   <li> <NavLink to='/dashboard/alluser'><FaHouseUser></FaHouseUser> See all user</NavLink> </li>
                   <li> <NavLink to='/dashboard/publish'> <MdPublish></MdPublish> Publish/unPublish</NavLink> </li>
                   <li><NavLink to='/dashboard/adminpayment'> <FaMoneyBillAlt></FaMoneyBillAlt>See payment</NavLink> </li>
+                  <li><NavLink to='/dashboard/adminresponse'> <MdQuestionAnswer></MdQuestionAnswer> Admin Response</NavLink> </li>
                   
                  </>
              }
