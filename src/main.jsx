@@ -29,6 +29,7 @@ import Commentdetails from "./components/Dashboard/comments/Commentdetails";
 import Comment from "./components/Dashboard/comments/Comment";
 import AdminRoute from "./components/AdminRoute"
 import Publish from "./components/Dashboard/admindashboard/Publish";
+import Adminpayment from "./components/Dashboard/response/Adminpayment";
 
 const queryClient = new QueryClient()
 
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
       {
         path:'publish',
         element:<AdminRoute><Publish></Publish></AdminRoute>
+      },
+      {
+        path:'adminpayment',
+        element:<Adminpayment></Adminpayment>
       }
      ]
     
