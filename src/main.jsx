@@ -20,6 +20,8 @@ import Paymnet from "./components/payments/Paymnet";
 import Createsurvey from "./components/survey/Createsurvey";
 import Surveyspage from "./components/public/Surveyspage";
 import Surveydetials from "./components/public/Surveydetials";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Userservey from "./components/Dashboard/userhome/Userservey";
 
 const queryClient = new QueryClient()
 
@@ -68,6 +70,20 @@ const router = createBrowserRouter([
       }
 
     ]
+  },
+  {
+     path:'dashboard',
+     element:<Dashboard></Dashboard>,
+     children:[
+        {
+          path:'usersurvey',
+          element:<Userservey></Userservey>,
+        },
+        {
+
+        }
+     ]
+    
   }
 ]);
 

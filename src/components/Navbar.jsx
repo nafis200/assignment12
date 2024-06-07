@@ -9,8 +9,18 @@ const Navbar = () => {
     const links = <>
            <Link className="ml-4" to="/">Home</Link>
            <Link className="ml-4" to='/surveypages'>Surveys page</Link>
-           <Link className="ml-4" to='/login'>Login</Link>
-           <Link className="ml-4" to='/signup'>Signup</Link>
+           {
+              !users?.email && <><Link className="ml-4" to='/login'>Login</Link>
+              <Link className="ml-4" to='/signup'>Signup</Link>
+              </>  
+           },
+           {
+             users?.email && <>
+              <Link className="ml-4" to='/dashboard'>Dashboard</Link>
+             </>
+           }
+           
+           
            <Link className="ml-4" to='/admin'>Admin</Link>
            <Link className="ml-4" to='/alluser'>AllUser</Link>
            <Link className="ml-4" to='/paymnet'>Payment</Link>
@@ -23,7 +33,7 @@ const handlelogout = () => {
       .then(() => {
         navigate('/login')
       })
-      .catch((error) => {
+      .catch(() => {
         
       });
   };
