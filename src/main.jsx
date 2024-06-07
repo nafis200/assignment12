@@ -26,6 +26,8 @@ import Usersurveydetail from "./components/Dashboard/userhome/Usersurveydetail";
 import UserReport from "./components/Dashboard/userreport/UserReport";
 import UserReprotdetails from "./components/Dashboard/userreport/UserReprotdetails";
 import Wellcome from "./components/Dashboard/Wellcome";
+import Commentdetails from "./components/Dashboard/comments/Commentdetails";
+import Comment from "./components/Dashboard/comments/Comment";
 
 const queryClient = new QueryClient()
 
@@ -100,6 +102,14 @@ const router = createBrowserRouter([
           path:'userreportdetails/:id',
           element:<UserReprotdetails></UserReprotdetails>,
           loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+       },
+       {
+         path:'comment/:id',
+         element:<Commentdetails></Commentdetails>
+       },
+       {
+         path:'comment',
+         element:<Comment></Comment>
        }
      ]
     
