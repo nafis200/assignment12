@@ -25,7 +25,7 @@ const Dashboard = () => {
     })
       const [datams] = userx.filter(it=> it.email === users?.email)
       const {role} = datams || {role:'admin'} 
-      console.log(role)
+  
      
       
     
