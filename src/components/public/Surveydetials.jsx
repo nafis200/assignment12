@@ -72,6 +72,17 @@ const Surveydetials = () => {
               location.reload();
         })
         .catch()
+       
+        const submitted_email= users?.email 
+        const submitted_name= users?.displayName 
+        const totalvalue = {
+           submitted_email,submitted_name,countyes,countno,email,title,description
+        }
+
+
+       axiosSecure.post('/surveyresponse',totalvalue)
+       .then()
+       .catch()
 
     }
   }

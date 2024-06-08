@@ -59,6 +59,17 @@ const Usersurveydetail = () => {
                   location.reload();
             })
             .catch()
+
+            const submitted_email= users?.email 
+            const submitted_name= users?.displayName 
+            const totalvalue = {
+               submitted_email,submitted_name,countyes,countno,email,title,description
+            }
+    
+    
+           axiosSecure.post('/surveyresponse',totalvalue)
+           .then()
+           .catch()
     
         }
       }
@@ -68,7 +79,7 @@ const Usersurveydetail = () => {
         {title}
       </h2>
       <p className="font-extralight text-center">{description}</p>
-      <div className="card lg:w-96 md:w-96 w-72 bg-base-100 shadow-xl lg:ml-[550px] ml-4 ">
+      <div className="card lg:w-96 md:w-96 w-72 bg-base-100 shadow-xl lg:ml-[400px] ml-4 ">
         <div className="card-body mt-5">
           <h2 className="card-title mt-9">
             <span className="flex mb-7 lg:mb-7 md:mb-7"></span>{" "}
@@ -118,9 +129,7 @@ const Usersurveydetail = () => {
            
         </div>
       </div>
-      {
-         options && <h2 className="lg:text-2xl text-xl text-center mt-5 text-blue-700 font-bold"> your votes result is: {options}</h2>
-      }
+     
     </div>
     );
 };
