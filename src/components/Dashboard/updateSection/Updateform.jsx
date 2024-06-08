@@ -28,8 +28,18 @@ const Updateform = () => {
   const handleSubmit = e=>{
     e.preventDefault();
     const form = e.target
-    axiosSecure.post('/surveyor')
+    const medium = form.difficulty.value 
+    const Dates = (form.date.value)
+    const title = form.title.value 
+    const description = form.description.value 
+    const Dates1 = Dates 
+    console.log(Dates1)
+    const totalValue = {
+        medium,Dates,title,description
+    }
+    axiosSecure.patch(`/update/${_id}`,totalValue)
     .then(res=>{
+      location.reload()
       Swal.fire({
         title: `Good job!`,
         text: "Successfully Update",
