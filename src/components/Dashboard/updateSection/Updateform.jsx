@@ -48,8 +48,8 @@ const Updateform = () => {
       <form onSubmit={handleSubmit} className="card-body">
         {/* 1st input */}
 
-        <h2 className="text-2xl text-center">Update Survey</h2>
-        <div className="lg:flex md:flex lg:gap-4 gap-2 md:gap-4 justify-center flex">
+        <h2 className="text-2xl text-center lg:mt-20">Update Survey</h2>
+        <div className="lg:flex md:flex lg:gap-4 gap-2 md:gap-4 justify-center flex ">
           <div className="">
             <label className="label">
               <span className="label-text ">title</span>
