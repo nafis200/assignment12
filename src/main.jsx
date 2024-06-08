@@ -34,6 +34,9 @@ import Adminresponse from "./components/Dashboard/response/Adminresponse";
 import Update from "./components/Dashboard/updateSection/Update";
 import Updateform from "./components/Dashboard/updateSection/Updateform";
 import Feedback from "./components/Dashboard/Feedback";
+import Surveyresponse from "./components/Dashboard/Surveyresponse";
+import Surveyresponsedetails from "./components/Dashboard/Surveyresponsedetails";
+import Privateroute from "./components/Privateroute";
 
 const queryClient = new QueryClient()
 
@@ -69,7 +72,7 @@ const router = createBrowserRouter([
       },
       {
          path:'/surveydetails/:id',
-         element: <Surveydetials></Surveydetials>,
+         element:<Surveydetials></Surveydetials>,
          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
       },
       
@@ -77,7 +80,7 @@ const router = createBrowserRouter([
   },
   {
      path:'dashboard',
-     element:<Dashboard></Dashboard>,
+     element: <Privateroute><Dashboard></Dashboard></Privateroute>,
      children:[
         {
           path:'wellcome',
@@ -141,6 +144,15 @@ const router = createBrowserRouter([
       {
         path:'feedback',
         element:<Feedback></Feedback>
+      },
+      {
+        path:'response',
+        element:<Surveyresponse></Surveyresponse>
+      },
+      {
+        path:'uniqueresponse/:id',
+        element:<Surveyresponsedetails></Surveyresponsedetails>,
+        loader:({params})=>fetch(`http://localhost:5000/surveyunique/${params.id}`)
       }
      ]
     

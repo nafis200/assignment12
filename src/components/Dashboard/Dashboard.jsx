@@ -1,7 +1,7 @@
 
 
 
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Navigate, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../useAuth";
 import useAxiosSexure from "../hooks/useAxiosSexure";
 import { RiSurveyLine } from "react-icons/ri";
@@ -14,7 +14,8 @@ import { FaMoneyBillAlt } from "react-icons/fa";
 import { MdQuestionAnswer } from "react-icons/md";
 
 const Dashboard = () => {
-    const {users} = useAuth()
+    const {users,logout} = useAuth()
+    const navigate = useNavigate()
     const axiosSecure = useAxiosSexure()
     const {data: userx = []} = useQuery({
         queryKey:['menu'],
@@ -26,6 +27,7 @@ const Dashboard = () => {
       const [datams] = userx.filter(it=> it.email === users?.email)
       const {role} = datams || {role:'admin'} 
   
+      
      
       
     
@@ -66,6 +68,7 @@ const Dashboard = () => {
                   <li><NavLink to='/dashboard/createsurvey'> <RiSurveyLine></RiSurveyLine>Create surveys</NavLink></li>
                   <li><NavLink to='/dashboard/updates'> <RiSurveyLine></RiSurveyLine>Update surveys</NavLink></li>
                   <li><NavLink to='/dashboard/feedback'> <RiSurveyLine></RiSurveyLine>Feedback surveys</NavLink></li>
+                  <li><NavLink to='/dashboard/response'><RiSurveyLine></RiSurveyLine>Response survey</NavLink> </li>
                  </>
              }
                <div className="divider divider-neutral"></div>

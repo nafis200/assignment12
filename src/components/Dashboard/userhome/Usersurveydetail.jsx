@@ -20,6 +20,7 @@ const Usersurveydetail = () => {
         countyes,
         countno,
         email,
+        serialNo,
       
       } = loader;
       const handleSubmit = (e)=>{
@@ -63,7 +64,7 @@ const Usersurveydetail = () => {
             const submitted_email= users?.email 
             const submitted_name= users?.displayName 
             const totalvalue = {
-               submitted_email,submitted_name,countyes,countno,email,title,description
+               submitted_email,submitted_name,countyes,countno,email,title,description,serialNo
             }
     
     

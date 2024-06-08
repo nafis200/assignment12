@@ -1,21 +1,19 @@
-
-
 import { useQuery } from "@tanstack/react-query";
 import useAxiospublic from "../../hooks/useAxiospublic";
 
 const Adminresponse = () => {
-    const axiosSecure = useAxiospublic()
-    let dynamically = "all";
-    const { data: survey = []} = useQuery({
-        queryKey: ["survey"],
-        queryFn: async () => {
-          const res = await axiosSecure.get(`/surveyor/${dynamically}`);
-          return res.data;
-        }
-      });   
-      return (
-        <div>
-            <div className="overflow-x-auto">
+  const axiosSecure = useAxiospublic();
+  let dynamically = "all";
+  const { data: survey = [] } = useQuery({
+    queryKey: ["survey"],
+    queryFn: async () => {
+      const res = await axiosSecure.get(`/surveyor/${dynamically}`);
+      return res.data;
+    }
+  });
+  return (
+    <div>
+      <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
@@ -38,8 +36,8 @@ const Adminresponse = () => {
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Adminresponse;
