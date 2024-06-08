@@ -43,6 +43,10 @@ const Publishcard = ({data,refetch}) => {
              timer: 2000
            });
         })
+        
+       axiosSecure.delete(`/feedback/${e}`)
+       .then()
+       .catch()
     }
     return (
         <div>
