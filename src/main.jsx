@@ -31,6 +31,8 @@ import AdminRoute from "./components/AdminRoute"
 import Publish from "./components/Dashboard/admindashboard/Publish";
 import Adminpayment from "./components/Dashboard/response/Adminpayment";
 import Adminresponse from "./components/Dashboard/response/Adminresponse";
+import Update from "./components/Dashboard/updateSection/Update";
+import Updateform from "./components/Dashboard/updateSection/Updateform";
 
 const queryClient = new QueryClient()
 
@@ -125,6 +127,15 @@ const router = createBrowserRouter([
       {
         path:'createsurvey',
         element:<Createsurvey></Createsurvey>
+      },
+      {
+         path:'updates',
+         element:<Update></Update>
+      },
+      {
+        path:'updates/:id',
+        element:<Updateform></Updateform>,
+        loader:({params})=>fetch(`http://localhost:5000/surveyors/${params.id}`)
       }
      ]
     

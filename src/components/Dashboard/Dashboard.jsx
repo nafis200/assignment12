@@ -64,7 +64,7 @@ const Dashboard = () => {
              {
                  role === 'surveyor' && <>
                   <li><NavLink to='/dashboard/createsurvey'> <RiSurveyLine></RiSurveyLine>Create surveys</NavLink></li>
-                  <li><NavLink to='/dashboard/userreport'> <RiSurveyLine></RiSurveyLine> surveys</NavLink></li>
+                  <li><NavLink to='/dashboard/updates'> <RiSurveyLine></RiSurveyLine>Update surveys</NavLink></li>
                  </>
              }
                <div className="divider divider-neutral"></div>

@@ -1,6 +1,6 @@
 import { Slide } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
-const Userparti = ({ data }) => {
+const Updatecard = ({ data }) => {
   const { title, description, totalVotes, _id } = data;
   return (
     <div>
@@ -29,8 +29,8 @@ const Userparti = ({ data }) => {
               {totalVotes}
             </h2>
           </Slide>
-          <Link to={`/dashboard/userSurveydetails/${_id}`}>
-            <button className="btn btn-primary">Participants Survey</button>
+          <Link to={`/dashboard/updates/${_id}`}>
+            <button className="btn btn-primary">Update Survey</button>
           </Link>
         </div>
       </div>
@@ -38,4 +38,4 @@ const Userparti = ({ data }) => {
   );
 };
 
-export default Userparti;
+export default Updatecard;
