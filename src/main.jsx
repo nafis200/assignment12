@@ -37,6 +37,7 @@ import Feedback from "./components/Dashboard/Feedback";
 import Surveyresponse from "./components/Dashboard/Surveyresponse";
 import Surveyresponsedetails from "./components/Dashboard/Surveyresponsedetails";
 import Privateroute from "./components/Privateroute";
+import Success from "./components/Success";
 
 const queryClient = new QueryClient()
 
@@ -73,8 +74,12 @@ const router = createBrowserRouter([
       {
          path:'/surveydetails/:id',
          element:<Surveydetials></Surveydetials>,
-         loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+         loader:({params})=>fetch(`https://assignment-12-backend-rho.vercel.app/details/${params.id}`)
       },
+      {
+        path:'/success',
+        element:<Success></Success>
+      }
       
     ]
   },
@@ -97,12 +102,12 @@ const router = createBrowserRouter([
         {
           path:'userSurveydetails/:id', 
           element:<Usersurveydetail></Usersurveydetail>,
-          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-backend-rho.vercel.app/details/${params.id}`)
        },
        {
           path:'userreportdetails/:id',
           element:<UserReprotdetails></UserReprotdetails>,
-          loader:({params})=>fetch(`http://localhost:5000/details/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-backend-rho.vercel.app/details/${params.id}`)
        },
        {
          path:'comment/:id',
@@ -139,7 +144,7 @@ const router = createBrowserRouter([
       {
         path:'updates/:id',
         element:<Updateform></Updateform>,
-        loader:({params})=>fetch(`http://localhost:5000/surveyors/${params.id}`)
+        loader:({params})=>fetch(`https://assignment-12-backend-rho.vercel.app/surveyors/${params.id}`)
       },
       {
         path:'feedback',
@@ -152,7 +157,7 @@ const router = createBrowserRouter([
       {
         path:'uniqueresponse/:id',
         element:<Surveyresponsedetails></Surveyresponsedetails>,
-        loader:({params})=>fetch(`http://localhost:5000/surveyunique/${params.id}`)
+        loader:({params})=>fetch(`https://assignment-12-backend-rho.vercel.app/surveyunique/${params.id}`)
       }
      ]
     

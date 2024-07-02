@@ -1,3 +1,4 @@
+import axios from "axios";
 import Banner from "./homesection/Banner";
 import Faq from "./homesection/Faq";
 import Latest from "./homesection/Latest";
@@ -5,15 +6,23 @@ import Mostvote from "./homesection/Mostvote";
 import Work from "./homesection/Work";
 
 
+
 const Home = () => {
-//   const now = new Date();
-// const customTimestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
-// console.log(customTimestamp);
-
-// const cursor = collection.find().sort({ date: 1 });
-
+ 
+  const nafis =()=>{
+      axios.post('http://localhost:5000/sslComerece',{
+        amount:100,
+      })
+      .then(res=>{
+        console.log(res.data)
+         if(res.data){
+          window.location.replace(res.data.paymentUrl)
+         }
+      })
+  }
   return (
      <div>
+      <button onClick={nafis} className="btn btn-primary">Click</button>
      <Banner></Banner>
      <div className="mt-20 bg-[url('https://i.postimg.cc/j5VDrL6M/1000-F-274471125-m-RSXEz1-Xhtm-Ztmj-S8-H3g-TNFH2a-Yt-LWcy.jpg')] min-h-full ">
       <h2 className="text-2xl text-center font-bold">Featured Surveys Section</h2>

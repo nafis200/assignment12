@@ -53,21 +53,8 @@ const Authprovider = ({ children }) => {
           }
         });
 
-        // axios
-        //   .post("http://localhost:5000/jwt", loggedUser, {
-        //     withCredentials: true
-        //   })
-        //   .then((res) => {
-        //     console.log(res.data);
-        //   });
       } else {
         localStorage.removeItem("access-token");
-
-        // axios
-        //   .post("http://localhost:5000/logout", loggedUser, {
-        //     withCredentials: true
-        //   })
-        //   .then((res) => {});
       }
     });
     return () => {

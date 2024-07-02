@@ -21,6 +21,7 @@ const Navbar = () => {
            }
            
            <Link className="ml-4" to='/paymnet'>Pricing Page </Link>
+           <Link className="ml-4" to="success">Success</Link>
            
            
     </>
